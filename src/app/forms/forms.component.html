@@ -1,0 +1,165 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+
+      <form form [formGroup]="formularioprincipal">
+        <fieldset>
+          <legend>Agregar Rol Empleado</legend>
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-4">Nombre:</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresar Nombre" formControlName="name">
+          </div>
+
+          <!-- validacion mensaje -->
+
+
+          <div class="form-group has-danger" *ngIf="name?.invalid && (name?.dirty || name?.touched)"  >
+            <div class="container-error-message" *ngIf="name?.errors?.['required']" > <p class="text-danger"> El nombre es requerido. </p> </div>
+            <div class="container-error-message" *ngIf="name?.errors" ><p class="text-danger"> El nombre debe tener al menos 3 caracteres. </p></div>
+          </div>
+
+
+          <fieldset>
+            <legend class="mt-4"></legend>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" formControlName="status" >
+              <label class="form-check-label" for="flexSwitchCheckDefault">Activo</label>
+            </div>
+          </fieldset>
+
+          <!-- SEPARACION -->
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              
+            <fieldset formGroupName="security" class="form-group">
+            <legend class="mt-4">Security</legend>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="roles">
+              <label class="form-check-label" for="flexCheckDefault">
+                Roles 
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="usuarios">
+              <label class="form-check-label" for="flexCheckDefault">
+                Usuarios
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+              formControlName="tablero_de_control">
+              <label class="form-check-label" for="flexCheckDefault">
+                Tablero de control
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset formGroupName="portfolio" class="form-group">
+            <legend class="mt-4">Portfolio</legend>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="adicionar_productos">
+              <label class="form-check-label" for="flexCheckDefault">
+                Adicionar productos 
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="lista_de_productos">
+              <label class="form-check-label" for="flexCheckDefault">
+                Lista de productos
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+              formControlName="tablero_de_control">
+              <label class="form-check-label" for="flexCheckDefault">
+                Tablero de control
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+              formControlName="publicacion_de_productos">
+              <label class="form-check-label" for="flexCheckDefault">
+                Publicación de productos
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+              formControlName="migrar_desde_identificacion">
+              <label class="form-check-label" for="flexCheckDefault">
+                Migrar desde identificación
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+              formControlName="cargue_masivo_fotos">
+              <label class="form-check-label" for="flexCheckDefault">
+                Carge masivo de fotos
+              </label>
+            </div>
+          </fieldset>
+
+            </div>
+            <div class="col-md-6">
+
+              <fieldset formGroupName="reports" class="form-group">
+                <legend class="mt-4">Reports</legend>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="consultar_productos_compradores">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Consultar productos compradores 
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="consulta_de_saldos">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Consulta de saldos
+                  </label>
+                </div>
+              </fieldset>
+              <br>
+              <fieldset formGroupName="negotiation" class="form-group">
+                <legend class="mt-4">Negotiation</legend>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="crear_negociacion">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Crear negociación 
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="consulte_sus_negociaciones">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Consulte sus negociaciones
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                  formControlName="tablero_de_control">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Tablero de control
+                  </label>
+                </div>
+              </fieldset>
+
+            </div>
+          </div>
+          <br>
+          <button type="button" class="btn btn-outline-danger " (click)="limpiar()">Limpiar</button>
+          <button type="button" class="btn btn-outline-success "  [disabled]="!formularioprincipal.valid" (click)="AccionEnviarFormulario()">Enviar</button>
+
+        </fieldset>
+      </form>
+      
+    </div>
+
+    <div class="col-4">
+
+      <pre>{{formularioprincipal.value | json}}</pre>
+
+
+    </div>
+
+  
+  </div>
+</div>
+
